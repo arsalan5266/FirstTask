@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Login Page</title>
+</head>
+<body>
+    <div class="container">
+        <img src="login.jpg" alt="">
+        <h2 class="header">LOGIN</h2>
+        <p>please enter your email and password</p>
+        <form id="loginForm">
+            <label for="emil"></label></span>
+            <input type="text" id="email" value="" placeholder="Enter Your Email" name="Email" required >
+
+            <label for="password"></label>
+            <input type="password" id="password" value="" placeholder="Enter Your Password" name="password" required >
+
+            <button type="button" id="loginbtn" onclick="myFunction()">Login</button>
+        </form>
+      
+      
+    </div>
+ 
+
+    <!-- <script src="script.js"></script> -->
+    <script>
+      function myFunction() {
+       
+        let correctEmail =  "arsalan@gmail.com";
+        let correctPassword= "12345";
+
+       let email = document.getElementById("email").value 
+       
+       let password = document.getElementById("password").value 
+       console.log(email,password);
+// if (email==correctEmail && password==correctPassword) {
+//             console.log("successfully login");
+//             window.location.href="signup.html"
+
+// }
+// else{
+//   alert("LogIn Failed")
+let formdata = new FormData();
+      formdata.append('staffEmail',email)
+      formdata.append('staffPassword',password)
+
+       
+    fetch('https://uat.digiflow.io/ClinicAppBackend/staff/Login',{
+      body:formdata,
+      method:'post'
+    })
+    .then((response)=>response.json())
+    .then((data) => {
+if (data.status=="200") {
+  window.location.href="signup.html"
+}else {
+   alert("login failed")
+}
+ 
+
+
+
+  
+    
+  })
+    .then((json)=>console.log(json,"json"));
+   
+      
+
+     
+}
+
+      
+
+     
+    </script>
+</body>
+</html>
