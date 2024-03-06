@@ -25,7 +25,7 @@
     </div>
  
 
-    <!-- <script src="script.js"></script> -->
+   
     <script>
       function myFunction() {
        
@@ -54,22 +54,21 @@ let formdata = new FormData();
     })
     .then((response)=>response.json())
     .then((data) => {
+      // console.log("data: ",data["staffId"])
+      // console.log("data,staffmail: ",data.data.staffEmail)
+      // console.log( data.data.staffBelongsTo.siteName)
+      // console.log( data.data.staffBelongsTo.siteAddress)
+      // console.log("data,staffbelongs: ", data.data.siteName)
 if (data.status=="200") {
+  
+  console.log(data);
   window.location.href="signup.html"
 }else {
-   alert("login failed")
+   alert("login failed");
 }
- 
-
-
-
-  
     
   })
     .then((json)=>console.log(json,"json"));
-   
-      
-
      
 }
 

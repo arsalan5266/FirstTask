@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TABLE</title>
+    <style>
+        #customers{
+    border-collapse: collapse;
+    width: 100%;
+}
+#customers td, customer th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+#customers tr:hover{
+   background-color: #ddd;
+}
+#customers th{
+   padding-top: 12px;
+   padding-bottom: 12px;
+  text-align: left;
+  background-color: #b34f4f;
+  color: white;
+
+}
+h1{
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+
+}
+
+    </style>
+</head>
+<body >
+
+    <h1 class="text-center">Storing Api Data In Table</h1>
+    <!-- <button type="button" id="btn" onclick="func()">fetchData</button> -->
+<div class="container">
+    <table id="customers">
+        <thead>
+        <tr>
+            <th>roleId</th>
+            <th>roleName</th>
+            <th>roleCreatedAt</th>
+            <th>roleActive</th>
+        </tr> 
+        </thead>
+        <tbody id="table_body">
+           
+            
+        </tbody>
+       
+
+    </table>
+</div>
+    <script>
+        //   function func() {
+        
+
+    fetch('https://uat.digiflow.io/ClinicAppBackend/role/getAllRoles', {
+      method: 'post'
+    })
+      .then((data) => {
+        return data.json();
+      })
+      .then((ObjData) => {
+        // console.log(ObjectData.data[0].roleId);
+        // console.log(ObjectData.data[0].roleName);
+        // console.log(ObjectData.data[0].roleCreatedAt);
+        // console.log(ObjectData.data[0].roleActive);
+        // console.log("");
+
+        // console.log(ObjectData.data[1].roleId);
+        // console.log(ObjectData.data[1].roleName);
+        // console.log(ObjectData.data[1].roleCreatedAt);
+        // console.log(ObjectData.data[1].roleActive);
+        // console.log("");
+
+        // console.log(ObjectData.data[2].roleId);
+        // console.log(ObjectData.data[2].roleName);
+        // console.log(ObjectData.data[2].roleCreatedAt);
+        // console.log(ObjectData.data[2].roleActive);
+
+        let tableData = "";
+        
+        ObjData.data.forEach((data) => {
+          tableData += `
+            <tr>
+              <td>${data.roleId}</td>
+              <td>${data.roleName}</td>
+              <td>${data.roleCreatedAt}</td>
+              <td>${data.roleActive}</td>
+            </tr>
+          `;
+        });
+
+        document.getElementById("table_body").innerHTML = tableData;
+      });
+//   }
+
+
+
+
+    fetch('https://jsonplaceholder.typicode.com/users',{
+    
+}
+).then((data)=>{
+    
+    return data.json();
+}).then((users)=>{
+   
+    console.log(users[1].address.geo.lat)
+    console.log(users[9].company.name)
+    console.log("");   
+
+    })
+
+
+  fetch('https://jsonplaceholder.typicode.com/todos',{
+    
+}
+).then((data)=>{
+    
+    return data.json();
+}).then((todos)=>{
+    console.log(todos);
+   
+    console.log(todos[0].title)
+    console.log(todos[0].userId)
+    // console.log(users[9].company.name)
+    // console.log("");   
+
+    })
+
+    </script>
+</body>
+</html>

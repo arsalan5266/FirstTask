@@ -126,6 +126,35 @@
     border-radius: 10px;
     cursor: pointer;
    }
+
+
+
+
+   #customers{
+    border-collapse: collapse;
+    width: 100%;
+}
+#customers td, customer th {
+  border: 1px solid #ddd;
+  padding: 8px;
+  height: 60px;
+  width: 100px;
+}
+#customers th{
+   padding-top: 12px;
+   padding-bottom: 12px;
+  text-align: left;
+  background-color: #b34f4f;
+  color: white;
+
+}
+h1{
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+
+}
+
  </style>
 </head>
 <body>
@@ -141,7 +170,7 @@
     </label>
     <div id="sidebarMenu">
         <ul class="menu">
-            <li><a href="#">HOME</a></li>
+            <li><a href="#" target="_parent">Doctor</a></li>
             <li><a href="#">About</a></li>
             <li><a href="#">Gallery</a></li>
             <li><a href="#">Product</a></li>
@@ -150,7 +179,115 @@
        <a href="login.html"> <button type="button" class="signInBtn" >signin</button></a>
     </div>
     <div class="main">
-        <h2>Welcome Here</h2>
+        <!-- <h1 class="text-center">Storing Api Data In Table</h1> -->
+    <!-- <button type="button" id="btn" onclick="func()">fetchData</button> -->
+<div class="container">
+    <table id="customers">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Time</th>
+            <th>Status</th>
+        </tr> 
+        </thead>
+        <tbody id="table_body">
+           
+            
+        </tbody>
+       
+
+    </table>
+</div>
     </div>
+
+
+
+    <script>
+        //   function func() {
+        
+
+    fetch('https://uat.digiflow.io/ClinicAppBackend/role/getAllRoles', {
+      method: 'post'
+    })
+      .then((data) => {
+        return data.json();
+      })
+      .then((ObjData) => {
+        // console.log(ObjectData.data[0].roleId);
+        // console.log(ObjectData.data[0].roleName);
+        // console.log(ObjectData.data[0].roleCreatedAt);
+        // console.log(ObjectData.data[0].roleActive);
+        // console.log("");
+
+        // console.log(ObjectData.data[1].roleId);
+        // console.log(ObjectData.data[1].roleName);
+        // console.log(ObjectData.data[1].roleCreatedAt);
+        // console.log(ObjectData.data[1].roleActive);
+        // console.log("");
+
+        // console.log(ObjectData.data[2].roleId);
+        // console.log(ObjectData.data[2].roleName);
+        // console.log(ObjectData.data[2].roleCreatedAt);
+        // console.log(ObjectData.data[2].roleActive);
+
+        let tableData = "";
+        
+        ObjData.data.forEach((data) => {
+          tableData += `
+            <tr>
+              <td>${data.roleId}</td>
+              <td>${data.roleName}</td>
+              <td>${data.roleCreatedAt}</td>
+              <td>${data.roleActive}</td>
+            </tr>
+          `;
+        });
+
+        document.getElementById("table_body").innerHTML = tableData;
+      });
+//   }
+
+
+
+
+    fetch('https://jsonplaceholder.typicode.com/users',{
+    
+}
+).then((data)=>{
+    
+    return data.json();
+}).then((users)=>{
+   
+    console.log(users[1].address.geo.lat)
+    console.log(users[9].company.name)
+    console.log("");   
+
+    })
+
+
+  fetch('https://jsonplaceholder.typicode.com/todos',{
+    
+}
+).then((data)=>{
+    
+    return data.json();
+}).then((todos)=>{
+    console.log(todos);
+   
+    console.log(todos[0].title)
+    console.log(todos[0].userId)
+    // console.log(users[9].company.name)
+    // console.log("");   
+
+    })
+
+    </script>
 </body>
 </html>
+
+
+
+
+
+
