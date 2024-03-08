@@ -1,6 +1,6 @@
 
 body {
-    /* background:gray; */
+   
    background-color: rgba(64, 8, 219, 0.75);
     display: flex;
     align-items: center;
@@ -10,8 +10,7 @@ body {
     
 }
 .header{
-    /* font-style:inherit; */
-    /* font-family: Monospace; */
+ 
     font-size: 30px;
     font-family:  sans-serif;
     font-weight: lighter;
@@ -31,13 +30,13 @@ body {
 .container {
     width: 300px;
     padding: 20px;
-    /* border: 1px solid #ccc; */
+   
     border-radius: 5px;
     text-align: center;
     padding-right:35px;
     background-color: black;
     color: rgb(214, 212, 212);
-    /* box-shadow: 0 20px 50px 0 rgba(28,9,80,.15); */
+    
 }
 
 label {
@@ -64,6 +63,7 @@ button {
     border-radius: 15px;
     width: 80px;
     cursor: pointer;
+    
 }
 
 

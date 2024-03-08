@@ -59,52 +59,54 @@ h1{
         //   function func() {
         
 
-    fetch('https://uat.digiflow.io/ClinicAppBackend/role/getAllRoles', {
-      method: 'post'
-    })
-      .then((data) => {
-        return data.json();
-      })
-      .then((ObjData) => {
-        // console.log(ObjectData.data[0].roleId);
-        // console.log(ObjectData.data[0].roleName);
-        // console.log(ObjectData.data[0].roleCreatedAt);
-        // console.log(ObjectData.data[0].roleActive);
-        // console.log("");
-
-        // console.log(ObjectData.data[1].roleId);
-        // console.log(ObjectData.data[1].roleName);
-        // console.log(ObjectData.data[1].roleCreatedAt);
-        // console.log(ObjectData.data[1].roleActive);
-        // console.log("");
-
-        // console.log(ObjectData.data[2].roleId);
-        // console.log(ObjectData.data[2].roleName);
-        // console.log(ObjectData.data[2].roleCreatedAt);
-        // console.log(ObjectData.data[2].roleActive);
-
-        let tableData = "";
+    // fetch('https://uat.digiflow.io/ClinicAppBackend/role/getAllRoles', {
+    //   method: 'post'
+    // })
+    //   .then((data) => {
+    //     return data.json();
+    //   })
+    //   .then((ObjData) => {
+    //     let tableData = "";
         
-        ObjData.data.forEach((data) => {
-          tableData += `
-            <tr>
-              <td>${data.roleId}</td>
+    //     ObjData.data.forEach((data) => {
+    //       tableData += `
+    //         <tr>
+    //           <td>${data.roleId}</td>
+    //           <td>${data.roleName}</td>
+    //           <td>${data.roleCreatedAt}</td>
+    //           <td>${data.roleActive}</td>
+    //         </tr>
+    //       `;
+    //     });
+
+    //     document.getElementById("table_body").innerHTML = tableData;
+    //   });
+//   }
+
+fetch('https://uat.digiflow.io/ClinicAppBackend/role/getAllRoles',{
+    method:'post'
+}).then((data)=>{
+    return data.json();
+})
+
+  .then((obj)=>{
+    let tbledata="";
+
+    obj.data.forEach((data) => {
+        tbledata += `<tr>
+              <td>${data.roleID}</td>
               <td>${data.roleName}</td>
               <td>${data.roleCreatedAt}</td>
               <td>${data.roleActive}</td>
-            </tr>
-          `;
-        });
-
-        document.getElementById("table_body").innerHTML = tableData;
-      });
-//   }
+        </tr>`
+    });
+    // document.getElementById("data_Object").innerHTML=tbledata;
+  })
 
 
 
 
-    fetch('https://jsonplaceholder.typicode.com/users',{
-    
+    fetch('https://jsonplaceholder.typicode.com/users',{ 
 }
 ).then((data)=>{
     
@@ -133,7 +135,29 @@ h1{
     // console.log("");   
 
     })
+    // fetch('https://jsonplaceholder.typicode.com/albums',{
+        
+    // }
+    // ).then((data)=>{
+    //     return data.json();
+    // }).then((Album)=>{
+    //     console.log(Album);
+    //     console.log(Album[5]);
+        // console.log(Album[3].title);
+    // })
+    let url ="read.xml";
+    fetch('https://restcountries.com/v2/all?format=xml')
+    .then(response => response.text())
+    .then(data => {
+        const parser = new DOMParser();
+        const xml =parser.parseFromString(data,"application/xml");
+        console.log(xml);
 
+        console.log(data[3].name);
+    });
+
+    
+  
     </script>
 </body>
 </html>
